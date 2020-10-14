@@ -1,24 +1,5 @@
 #!/bin/bash
 
-POSITIONAL=()
-while [[ $# -gt 0 ]]
-do
-key="$1"
-
-case $key in
-    --timber-version)
-    TIMBER_VERSION="$2"
-    shift # past argument
-    shift # past argument
-    ;;
-    *)    # unknown option
-    POSITIONAL+=("$1") # save it in an array for later
-    shift # past argument
-    ;;
-esac
-done
-set -- "${POSITIONAL[@]}" # restore positional parameters
-
 # Install and configure WordPress if we haven't already
 main() {
   BOLD=$(tput bold)
@@ -73,11 +54,6 @@ EOF
   # configure plugins and theme
   uninstall_plugins hello akismet
   wp --quiet plugin activate sc-plugin
-
-  # install a specific version of Timber if necessary
-  if [[ "$TIMBER_VERSION" ]] ; then
-    composer require --dev timber/timber:"$TIMBER_VERSION"
-  fi
 
   wp option set permalink_structure '/%postname%/'
   wp rewrite flush
