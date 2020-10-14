@@ -79,17 +79,17 @@ tooling:
 
   sniff-summary:
     service: appserver
-    cmd: './vendor/bin/phpcs --report=summary --standard=./phpcs.xml test src'
+    cmd: './vendor/bin/phpcs --report=summary --standard=./phpcs.xml test/unit test/integration src'
     description: 'Summarize PHPCS code sniffer findings'
 
   sniff:
     service: appserver
-    cmd: './vendor/bin/phpcs --standard=./phpcs.xml test src'
+    cmd: './vendor/bin/phpcs --standard=./phpcs.xml test/unit test/integration src'
     description: 'Run PHPCS code sniffer on all test and production code'
 
   sniff-fix:
     service: appserver
-    cmd: './vendor/bin/phpcbf --standard=./phpcs.xml test src'
+    cmd: './vendor/bin/phpcbf --standard=./phpcs.xml test/unit test/integration src'
     description: 'Fix all automatically fixable issues found by PHPCS'
 
   analyze:

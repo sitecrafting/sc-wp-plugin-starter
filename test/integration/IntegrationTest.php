@@ -16,15 +16,4 @@ use WP_UnitTestCase;
  * complain about a lack of tests defined here.
  */
 abstract class IntegrationTest extends WP_UnitTestCase {
-  public function setUp() : void {
-    parent::setUp();
-
-    /* Do stuff here */
-  }
-
-  public function tearDown() : void {
-    parent::tearDown();
-
-    /* Do stuff here */
-  }
 }
