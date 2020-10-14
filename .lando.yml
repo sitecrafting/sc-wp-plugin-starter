@@ -16,6 +16,14 @@ services:
   database:
     type: mysql:5.7
 
+  testdb:
+    type: mysql:5.7
+    portforward: true
+    creds:
+      user: test
+      password: test
+      database: test
+
   gitbook:
     type: node:10
 
