@@ -1,6 +1,8 @@
 /vendor/
 /wp/
 /wp-content/
+/test/wp/
+/test/wp-tests-lib/
 /node_modules/
 /_book/
 /database-backups/
