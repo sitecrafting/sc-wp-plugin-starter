@@ -8,7 +8,5 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-/*
- * Define any constants here for testing purposes
- */
-//define('ABSPATH', realpath(__DIR__ . '/../'));
+// Define any constants here for testing purposes...
+

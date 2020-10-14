@@ -1,4 +1,4 @@
-# TravisCI configuration for sitecrafting/conifer
+# TravisCI configuration for sitecrafting/sc-plugin
 
 language: php
 os:

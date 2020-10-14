@@ -19,26 +19,29 @@ use WP_REST_Response;
 class RestController {
   const API_NAMESPACE = 'sc-plugin/v1';
 
-  public function register_routes() {
-    register_rest_route(static::API_NAMESPACE, '/stuff', [
-      'methods' => 'GET',
-      'callback' => [$this, 'stuff_action'],
+  /**
+   * Register all custom REST routes for the SC PLUGIN plugin.
+   */
+  public function register_routes() : void {
+    // This incantation means:
+    // accept requests like /thing/:id where `:id` is an int.
+    register_rest_route(static::API_NAMESPACE, '/thing/(?P<id>\d+)', [
+      'methods'  => 'GET',
+      'callback' => [$this, 'thing_action'],
     ]);
   }
 
-  public function stuff_action(WP_REST_Request $request) : WP_REST_Response {
-    if (empty($_GET['thing'])) {
-      return new WP_REST_Response([
-        'success' => false,
-        'data'    => [],
-        'error'   => 'The `thing` GET parameter is required',
-      ], 400);
-    }
-
+  /**
+   * Handler for the /thing endpoint
+   *
+   * @param WP_REST_Request the REST request
+   * @return WP_REST_Response a REST response
+   */
+  public function thing_action(WP_REST_Request $request) : WP_REST_Response {
     $response = [
-      'success'      => true,
-      'data'         => [
-        'your_thing' => $_GET['thing'],
+      'success'    => true,
+      'data'       => [
+        'thing_id' => $request->get_param('id'),
       ],
     ];
 

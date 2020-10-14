@@ -4,11 +4,11 @@
 /node_modules/
 /_book/
 /database-backups/
-/conifer
+/sc-plugin # temporary archive dir
 
 # build artifacts
-/conifer-*.tar.gz
-/conifer-*.zip
+/sc-plugin-*.tar.gz
+/sc-plugin-*.zip
 
 # cypress test artifacts
 /cypress/videos
@@ -20,13 +20,13 @@ yarn-error.log
 
 # local configs
 wp-cli.local.yml
-/nbproject/private/
 
 # documentation
 /docs/_book/
 /docs/reference/*.md
 /docs/node_modules/
 
-
-# VS code
-.vscode/*
+# Various IDEs
+.idea
+.vscode
+nbproject

@@ -1,18 +1,14 @@
 includes:
-    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
-    level: 1
-#    level: 2
-#    level: 4
-#    level: 5
-#    level: max
-    inferPrivatePropertyTypeFromConstructor: true
-    bootstrapFiles:
-        - phpstan/bootstrap.php
-    scanFiles:
-        - vendor/paulthewalton/acf-stubs/acf-stubs.php
-    paths:
-        - lib/
-    ignoreErrors:
-        # TODO
-        - '#^Unsafe usage of new static\(\)\.$#'
+  level: 1
+  inferPrivatePropertyTypeFromConstructor: true
+  bootstrapFiles:
+    - phpstan/bootstrap.php
+  scanFiles:
+    - vendor/paulthewalton/acf-stubs/acf-stubs.php
+  paths:
+    - src/
+  ignoreErrors:
+    # TODO Figure out how to discover the WP_CLI class
+    - '#^Call to static method success\(\) on an unknown class WP_CLI\.$#'
