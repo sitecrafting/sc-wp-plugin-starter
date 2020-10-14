@@ -20,7 +20,7 @@ jobs:
       install:
         - yarn install --frozen-lockfile
       script:
-        - ./scripts/build-docs.sh
+        - ./bin/build-docs.sh
 
     # TODO test a full bin/project-setup.sh run + lando commands
 
