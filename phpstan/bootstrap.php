@@ -5,4 +5,4 @@
  * https://phpstan.org/user-guide/discovering-symbols
  */
 
-define( 'WP_PLUGIN_DIR', '/app/wp/wp-content/plugins' );
+// Define constants here...
