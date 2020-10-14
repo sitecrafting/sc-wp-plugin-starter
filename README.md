@@ -15,7 +15,7 @@ This script will:
 * do a find/replace in the codebase to rename it
 * rename the plugin entrypoint file (from `sc-plugin.php`)
 
-The script will then delete itself and start a fresh Git repo in the current directory.
+The script will then prompt you to delete itself and start a fresh Git repo in the current directory.
 
 At that point, you can start your plugin dev environment:
 
