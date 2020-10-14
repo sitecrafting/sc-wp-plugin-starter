@@ -27,7 +27,9 @@ mv sc-plugin.php ${KEBAB_NAME}.php
 mv assets/js/sc-plugin.js assets/js/${KEBAB_NAME}.js
 mv assets/js/admin/sc-plugin-admin.js assets/js/admin/${KEBAB_NAME}-admin.js
 
-# Delete this script and start a new Git repo
-rm -rf $0
-rm -rf .git
-git init
+read -p 'Delete startup script and start a new Git repo? This cannot be undone. (y/N) ' BLANK_SLATE
+if [[ $BLANK_SLATE = 'y' ]] ; then
+  rm -rf $0
+  rm -rf .git
+  git init
+fi
