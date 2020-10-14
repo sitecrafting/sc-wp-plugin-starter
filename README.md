@@ -27,7 +27,7 @@ Now you're ready to delete this README section, fill in the blanks to describe w
 
 ---
 
-TODO describe what this plugin is for
+SC PLUGIN DESCRIPTION
 
 ## Installation
 
