@@ -21,6 +21,12 @@ grep -rl --exclude-dir=.git "ScPlugin" . | while read f; do echo sed -i'' -e "s/
 grep -rl --exclude-dir=.git "SC_PLUGIN" . | while read f; do echo sed -i'' -e "s/SC_PLUGIN/${CONST_NAME}/" $f; done
 
 echo 'Initializing files...'
-echo mv sc-plugin.php ${KEBAB_NAME}.php
-echo mv assets/js/sc-plugin.js assets/js/${KEBAB_NAME}.js
-echo mv assets/js/admin/sc-plugin-admin.js assets/js/admin/${KEBAB_NAME}-admin.js
+mv sc-plugin.php ${KEBAB_NAME}.php
+mv assets/js/sc-plugin.js assets/js/${KEBAB_NAME}.js
+mv assets/js/admin/sc-plugin-admin.js assets/js/admin/${KEBAB_NAME}-admin.js
+
+exit #TODO
+# Delete this script and start a new Git repo
+rm -rf $0
+rm -rf .git
+git init
