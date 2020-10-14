@@ -1,6 +1,7 @@
 {
   "name": "sitecrafting/sc-plugin",
   "description": "SC PLUGIN DESCRIPTION",
+  "type": "wordpress-plugin",
   "license": "MIT",
   "authors": [
   ],
