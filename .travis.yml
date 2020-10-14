@@ -29,7 +29,9 @@ install:
   - composer install --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit --group unit
+  # TODO download WP Unit Test Suite
+  #- vendor/bin/phpunit --group unit
   # TODO integration tests
-  - ./vendor/bin/phpcs --standard=./phpcs.xml test lib
+  #- vendor/bin/phpunit --group integration
+  - ./vendor/bin/phpcs --standard=./phpcs.xml test/unit test/integration src
   - vendor/bin/phpstan analyse
