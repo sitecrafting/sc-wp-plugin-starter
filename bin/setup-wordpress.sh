@@ -26,9 +26,9 @@ main() {
 
   WP_DIR="$LANDO_MOUNT/wp"
 
-  if ! [[ -d "$WP_DIR"/wp-content/plugins/conifer ]] ; then
-    echo 'Linking conifer plugin directory...'
-    ln -s "../../../" "$WP_DIR"/wp-content/plugins/conifer
+  if ! [[ -d "$WP_DIR"/wp-content/plugins/sc-plugin ]] ; then
+    echo 'Linking sc-plugin plugin directory...'
+    ln -s "../../../" "$WP_DIR"/wp-content/plugins/sc-plugin
   fi
 
   echo 'Checking for WordPress config...'
@@ -60,37 +60,24 @@ EOF
   else
     # install WordPress
     wp core install \
-      --url='http://conifer.lndo.site' \
-      --title='Conifer' \
-      --admin_user='conifer' \
-      --admin_password='conifer' \
-      --admin_email='conifer@coniferplug.in' \
+      --url='http://sc-plugin.lndo.site' \
+      --title='SC PLUGIN' \
+      --admin_user='admin' \
+      --admin_password='admin' \
+      --admin_email='web@sitecrafting.com' \
       --skip-email
   fi
 
+  wp option update "SC PLUGIN DESCRIPTION"
+
   # configure plugins and theme
   uninstall_plugins hello akismet
-  wp --quiet plugin activate conifer
-  wp --quiet theme activate groot
+  wp --quiet plugin activate sc-plugin
 
   # install a specific version of Timber if necessary
   if [[ "$TIMBER_VERSION" ]] ; then
     composer require --dev timber/timber:"$TIMBER_VERSION"
   fi
-
-  # install test themes
-  rsync --archive --recursive $LANDO_MOUNT/test/themes/ $LANDO_MOUNT/wp/wp-content/themes/
-
-  # uninstall stock themes
-  wp --quiet theme uninstall \
-    twentyten \
-    twentyeleven \
-    twentytwelve \
-    twentythirteen \
-    twentyfourteen \
-    twentyfifteen \
-    twentysixteen \
-    twentyseventeen
 
   wp option set permalink_structure '/%postname%/'
   wp rewrite flush
@@ -98,8 +85,8 @@ EOF
   echo
   echo 'Done setting up!'
   echo
-  echo 'Your WP username is: conifer'
-  echo 'Your password is: conifer'
+  echo 'Your WP username is: admin'
+  echo 'Your password is: admin'
   echo
 
 }

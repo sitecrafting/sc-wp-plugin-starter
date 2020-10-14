@@ -19,6 +19,9 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
   require_once __DIR__ . '/vendor/autoload.php';
 }
 
+use ScPlugin\Rest\RestController;
+use ScPlugin\WpCli\ScPluginCommand;
+
 define('SC_PLUGIN_PLUGIN_WEB_PATH', plugin_dir_url(__FILE__));
 define('SC_PLUGIN_PLUGIN_JS_ROOT', SC_PLUGIN_PLUGIN_WEB_PATH . 'js');
 define('SC_PLUGIN_PLUGIN_VIEW_PATH', __DIR__ . '/views');
@@ -28,7 +31,7 @@ define('SC_PLUGIN_PLUGIN_VIEW_PATH', __DIR__ . '/views');
  * Add REST Routes
  */
 add_action('rest_api_init', function() {
-  $controller = new ScPlugin\Rest\RestController();
+  $controller = new RestController();
   $controller->register_routes();
 });
 
@@ -36,8 +39,8 @@ add_action('rest_api_init', function() {
 /*
  * Add WP-CLI tooling
  */
-if (class_exists(WP_CLI::class)) {
-  $command = new ScPlugin\WpCli\ScPluginCommand();
+if (defined('WP_CLI') && WP_CLI) {
+  $command = new ScPluginCommand();
   WP_CLI::add_command('sc-plugin', $command);
 }
 

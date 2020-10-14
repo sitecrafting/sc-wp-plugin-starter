@@ -25,11 +25,7 @@ services:
       database: test
 
   gitbook:
-    type: node:10
-
-    run:
-      - yarn
-      - ./bin/build-docs.sh
+    type: node:14
 
   mailhog:
     type: mailhog:v1.0.0
