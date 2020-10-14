@@ -49,7 +49,7 @@ EOF
       --skip-email
   fi
 
-  wp option update "SC PLUGIN DESCRIPTION"
+  wp option update blogdescription "SC PLUGIN DESCRIPTION"
 
   # configure plugins and theme
   uninstall_plugins hello akismet
