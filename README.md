@@ -13,7 +13,7 @@ bin/project-setup.sh
 This script will:
 * prompt you for the project name in a couple different formats
 * do a find/replace in the codebase to rename it
-* rename the plugin entrypoint file (from `sc-plugin.php`)
+* rename the plugin entrypoint file (from `sc-plugin.php`) and various other files
 
 The script will then prompt you to delete itself and start a fresh Git repo in the current directory.
 
