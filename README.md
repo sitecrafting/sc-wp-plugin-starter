@@ -51,6 +51,10 @@ wp sc-plugin
 
 (In the dev environment, prefix this with `lando` to run it inside Lando!)
 
+## REST Endpoints
+
+Defines the endpoint at `/wp-json/sc-plugin/v1/thing/:id` (in `src/Rest/RestController.php`).
+
 ## Development
 
 Clone this repo and start the dev environment using Lando:
@@ -68,3 +72,5 @@ lando unit # run unit tests
 lando integration # run integration tests
 lando test # run all tests
 ```
+
+This code was generated from the [SC WP Plugin Starter](https://github.com/sitecrafting/sc-wp-plugin-starter) project.
