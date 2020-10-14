@@ -1,12 +1,12 @@
 <?php
 /**
- * Base class for MultiCare test cases
+ * Base class for SC PLUGIN unit test cases
  *
  * @copyright 2020 SiteCrafting, Inc.
  * @author    Coby Tamayo <ctamayo@sitecrafting.com>
  */
 
-namespace MultiCare;
+namespace ScPlugin\Unit;
 
 use PHPUnit\Framework\TestCase;
 use WP_Mock;

@@ -45,7 +45,7 @@ services:
 tooling:
   clean:
     service: appserver
-    cmd: 'rm -rf node_modules vendor *.tar.gz *.zip wp'
+    cmd: 'rm -rf node_modules vendor *.tar.gz *.zip wp test/wp test/wp-tests-lib'
 
   install:
     service: appserver
