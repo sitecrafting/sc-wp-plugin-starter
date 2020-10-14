@@ -1,5 +1,7 @@
 # SC PLUGIN
 
+![Build Status](https://api.travis-ci.org/sitecrafting/sc-wp-plugin-starter.svg?branch=main)
+
 Starter WordPress plugin project.
 
 To get started, clone this repo and run the project startup project script:
@@ -23,7 +25,7 @@ At that point, you can start your plugin dev environment:
 lando start
 ```
 
-Now you're ready to delete this README section, fill in the blanks to describe what your plugin does, and then make it so. Happy hacking!
+Now you're ready to delete this README section (`---` and up), fill in the blanks to describe what your plugin does, and then make it so. Happy hacking!
 
 ---
 
