@@ -31,6 +31,10 @@ TODO
 
 TODO
 
+## Customization
+
+Override template files from your theme by placing them in a directory called `sc-plugin`.
+
 ## Development
 
 Clone this repo and start the dev environment using Lando:
