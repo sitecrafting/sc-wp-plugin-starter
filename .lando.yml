@@ -1,0 +1,114 @@
+name: sc-plugin
+recipe: wordpress
+config:
+  webroot: wp
+  php: '7.4'
+
+services:
+  node:
+    type: node:14
+
+  appserver:
+    run:
+      - composer install
+      - ./bin/setup-wordpress.sh
+
+  database:
+    type: mysql:5.7
+
+  gitbook:
+    type: node:10
+
+    run:
+      - yarn
+      - ./bin/build-docs.sh
+
+  mailhog:
+    type: mailhog:v1.0.0
+    hogfrom:
+      - appserver
+
+  docs:
+    type: nginx:1.18
+    ssl: true
+    webroot: docs/_book
+
+tooling:
+  clean:
+    service: appserver
+    cmd: 'rm -rf node_modules vendor *.tar.gz *.zip wp'
+
+  install:
+    service: appserver
+    cmd: './bin/setup-wordpress.sh'
+    description: 'Install and configure WordPress for custom plugin dev'
+
+  debug:
+    service: appserver
+    cmd: 'tail -f ./wp/wp-content/debug.log'
+    description: 'Get real-time WP debug log output'
+
+  unit:
+    service: appserver
+    cmd: './vendor/bin/phpunit --group unit'
+    description: 'Run unit tests'
+
+  integration:
+    service: appserver
+    cmd: './vendor/bin/phpunit --group integration'
+    description: 'Run integration tests'
+
+  test:
+    service: appserver
+    cmd: './vendor/bin/phpunit'
+    description: 'Run all unit and integration tests'
+
+  sniff-summary:
+    service: appserver
+    cmd: './vendor/bin/phpcs --report=summary --standard=./phpcs.xml test lib'
+    description: 'Summarize PHPCS code sniffer findings'
+
+  sniff:
+    service: appserver
+    cmd: './vendor/bin/phpcs --standard=./phpcs.xml test lib'
+    description: 'Run PHPCS code sniffer on all test and production code'
+
+  sniff-fix:
+    service: appserver
+    cmd: './vendor/bin/phpcbf --standard=./phpcs.xml test lib'
+    description: 'Fix all automatically fixable issues found by PHPCS'
+
+  analyze:
+    service: appserver
+    cmd: './vendor/bin/phpstan analyse'
+    description: 'Run phpstan coding standards (level 1)'
+
+  analyse:
+    service: appserver
+    cmd: './vendor/bin/phpstan analyse'
+    description: 'Run phpstan coding standards (level 1)'
+
+  phpstan:
+    service: appserver
+    cmd: './vendor/bin/phpstan'
+    description: 'Run phpstan commands for static analysis'
+
+  docs:
+    service: gitbook
+    cmd: './bin/build-docs.sh ./docs'
+    description: 'Build documentation in _book folder using Gitbook'
+
+  gitbook:
+    service: gitbook
+    cmd: 'yarn gitbook'
+    description: 'Run arbitrary gitbook commands'
+
+proxy:
+  appserver:
+    - sc-plugin.lndo.site
+
+  mailhog:
+    - mail.sc-plugin.lndo.site
+
+  docs:
+    - docs.sc-plugin.lndo.site

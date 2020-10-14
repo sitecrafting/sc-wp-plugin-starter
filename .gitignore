@@ -1,0 +1,32 @@
+/vendor/
+/wp/
+/wp-content/
+/node_modules/
+/_book/
+/database-backups/
+/conifer
+
+# build artifacts
+/conifer-*.tar.gz
+/conifer-*.zip
+
+# cypress test artifacts
+/cypress/videos
+/cypress/screenshots
+.Trash*
+
+# yarn artifacts, or "yartifacts"
+yarn-error.log
+
+# local configs
+wp-cli.local.yml
+/nbproject/private/
+
+# documentation
+/docs/_book/
+/docs/reference/*.md
+/docs/node_modules/
+
+
+# VS code
+.vscode/*
