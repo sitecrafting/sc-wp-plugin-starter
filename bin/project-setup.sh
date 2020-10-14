@@ -7,6 +7,12 @@ read -p 'PHP Constant Name (e.g. "JEDI_ACADEMY"): ' CONST_NAME
 read -p 'kebab-case-project-name (e.g. "jedi-academy"): ' KEBAB_NAME
 read -p 'snake_case_project_name (e.g. "jedi_academy"): ' SNAKE_NAME
 
+echo 'Initializing files...'
+mv sc-plugin.php ${KEBAB_NAME}.php
+mv assets/js/sc-plugin.js assets/js/${KEBAB_NAME}.js
+mv assets/js/admin/sc-plugin-admin.js assets/js/admin/${KEBAB_NAME}-admin.js
+mv src/WpCli/ScPluginCommand.php src/WpCli/${NAMESPACE}Command.php
+
 # Need to do description first, to avoid prematurely replacing "SC PLUGIN" instances
 # that are actually part of "SC PLUGIN DESCRIPTION"
 grep -rl --exclude-dir=.git "SC PLUGIN DESCRIPTION" . | while read f; do sed -i'' -e "s/SC PLUGIN DESCRIPTION/${DESCRIPTION}/" $f; done
@@ -21,11 +27,6 @@ grep -rl --exclude-dir=.git "SC_PLUGIN" .             | while read f; do sed -i'
 grep -rl --exclude-dir=.git "sc-plugin" . | while read f; do sed -i'' -e "s/sc-plugin/${KEBAB_NAME}/" $f; done
 grep -rl --exclude-dir=.git "ScPlugin" .  | while read f; do sed -i'' -e "s/ScPlugin/${NAMESPACE}/" $f; done
 grep -rl --exclude-dir=.git "SC_PLUGIN" . | while read f; do sed -i'' -e "s/SC_PLUGIN/${CONST_NAME}/" $f; done
-
-echo 'Initializing files...'
-mv sc-plugin.php ${KEBAB_NAME}.php
-mv assets/js/sc-plugin.js assets/js/${KEBAB_NAME}.js
-mv assets/js/admin/sc-plugin-admin.js assets/js/admin/${KEBAB_NAME}-admin.js
 
 read -p 'Delete startup script and start a new Git repo? This cannot be undone. (y/N) ' BLANK_SLATE
 if [[ $BLANK_SLATE = 'y' ]] ; then
